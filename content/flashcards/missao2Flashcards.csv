@@ -1,0 +1,9 @@
+#tipo;frente;verso;contexto;tags
+Basic;"Qual é o valor e a periodicidade do benefício DF Social?";"R$ 150 mensais";"Transferência direta de renda, sem restrição de uso exclusivo para alimentos.";df-social;transferencia-renda
+Basic;"Qual é a finalidade central do Cartão Prato Cheio?";"Segurança alimentar e nutricional";"O crédito é exclusivo para compra de gêneros alimentícios, vedado o saque em dinheiro.";prato-cheio;transferencia-renda
+Basic;"O beneficiário do Cartão Prato Cheio pode sacar o valor em caixas eletrônicos?";"Não";"O uso é restrito a máquinas de cartão de estabelecimentos comerciais de alimentos.";prato-cheio;transferencia-renda
+Basic;"Qual é o valor e a periodicidade do Cartão Gás?";"R$ 100 bimestrais";"Destinado à aquisição de botijão de gás (GLP 13kg) em locais cadastrados.";cartao-gas;transferencia-renda
+Basic;"O Cartão Gás permite saque em dinheiro?";"Não";"Assim como o Prato Cheio, o crédito só pode ser usado no comércio credenciado para a finalidade estrita.";cartao-gas;transferencia-renda
+Basic;"É permitida a cumulação simultânea do DF Social, Prato Cheio e Cartão Gás?";"Sim";"Não há vedação legal, desde que cumpram os requisitos (CadÚnico e renda per capita de até 1/2 salário mínimo).";cumulatividade;transferencia-renda
+Permanence;"Por que o DF Social garante mais autonomia familiar do que o Cartão Prato Cheio e o Cartão Gás?";"Porque não restringe o tipo de compra";"O DF Social visa a superação da pobreza geral (contas, roupas, etc.). Os outros dois são carimbados (comida e gás).";df-social;prato-cheio
+Cloze;"A renda familiar per capita máxima para ter direito aos programas Prato Cheio, DF Social e Cartão Gás é de {{c1::meio}} salário mínimo.";"";"Regra de corte unificada na assistência social do DF.";elegibilidade;transferencia-renda

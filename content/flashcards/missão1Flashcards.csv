@@ -1,0 +1,11 @@
+#tipo;frente;verso;contexto;tags
+Basic;"Qual é o foco central de atuação da Proteção Social Básica (PSB)?";"Prevenção de riscos e vulnerabilidades";"A PSB atua ANTES da violação de direitos ocorrer.";suas;psb
+Basic;"Qual é o equipamento estatal de referência da Proteção Social Básica?";"CRAS";"Centro de Referência de Assistência Social. Funciona como a porta de entrada preventiva.";suas;psb
+Basic;"Qual é a condição (linha invisível) para a Proteção Especial de Média Complexidade?";"Violação de direitos SEM rompimento de vínculos";"A pessoa sofreu violência/dano, mas ainda pode ser mantida com a família ou comunidade.";suas;pse
+Basic;"Quais são os equipamentos padrão da Proteção Especial de Média Complexidade?";"CREAS e Centro POP";"Lembre-se: 'E' de Especializado (CREAS).";suas;pse
+Basic;"Qual é a condição para a Proteção Especial de Alta Complexidade?";"Violação de direitos COM rompimento de vínculos";"A situação é tão grave que exige a retirada do indivíduo para garantir proteção integral.";suas;pse
+Basic;"Onde a Proteção Especial de Alta Complexidade é ofertada?";"Unidades de Acolhimento";"Exemplos: Abrigos institucionais, repúblicas, casas-lar, família acolhedora.";suas;pse
+Permanence;"Por que uma mulher vítima de violência doméstica é encaminhada ao CREAS e não ao CRAS?";"Porque já ocorreu violação de direitos";"CRAS atua na prevenção. Se a violência ocorreu e os laços não foram totalmente rompidos, é responsabilidade do CREAS (Média Complexidade).";suas;maria-da-penha
+Cloze;"A Violência {{c1::Moral}} na Lei Maria da Penha é definida por qualquer conduta que configure calúnia, difamação ou injúria.";"";"É o ataque direto à honra ou à reputação da vítima perante terceiros.";maria-da-penha
+Reversed;"Qual tipo de violência [Maria da Penha] visa causar dano emocional, diminuir a autoestima ou controlar o comportamento?";"Violência Psicológica";"Exemplos: gaslighting, perseguição, chantagem, isolamento.";maria-da-penha
+Reversed;"Violência Psicológica [Maria da Penha]";"Dano emocional, diminuição da autoestima ou controle de comportamento";"Difere da moral porque ataca o psicológico interno da vítima, não necessariamente sua honra pública.";maria-da-penha
