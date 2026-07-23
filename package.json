@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "sync": "node scripts/sync-content.js",
+    "predev": "npm run sync",
+    "prebuild": "npm run sync",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -10,8 +13,12 @@
   },
   "dependencies": {
     "next": "16.2.10",
+    "next-auth": "^4.24.14",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-markdown": "^10.1.0",
+    "recharts": "^3.9.2",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "^9",
