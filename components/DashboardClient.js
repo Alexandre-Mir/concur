@@ -2,14 +2,24 @@
 
 import { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useSession } from 'next-auth/react';
-import ProgressChart from '@/components/ProgressChart';
 import TopicMatrix from '@/components/TopicMatrix';
 import {
   getStudyStreak,
   exportUserDataJSON,
   importUserDataJSON,
 } from '@/lib/flashcards';
+
+// Carrega o gráfico dinamicamente sem SSR para prevenir falhas de renderização gráfica
+const ProgressChart = dynamic(() => import('@/components/ProgressChart'), {
+  ssr: false,
+  loading: () => (
+    <div className="glass-card chart-container" style={{ minHeight: 380, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <p className="text-secondary text-sm">📈 Carregando gráfico de desempenho...</p>
+    </div>
+  ),
+});
 
 export default function DashboardClient({
   totalSessoes,
@@ -66,10 +76,10 @@ export default function DashboardClient({
   };
 
   return (
-    <>
+    <div className="dashboard-wrapper page-fade-in">
       {/* Stat cards */}
       <div className="stats-grid">
-        <div className="glass-card stat-card">
+        <div className="glass-card stat-card stat-card--streak">
           <span className="stat-card__icon">🔥</span>
           <div className="stat-card__content">
             <span className="stat-card__value">
@@ -80,28 +90,32 @@ export default function DashboardClient({
             </span>
           </div>
         </div>
-        <div className="glass-card stat-card">
+
+        <div className="glass-card stat-card stat-card--sessions">
           <span className="stat-card__icon">📅</span>
           <div className="stat-card__content">
             <span className="stat-card__value">{totalSessoes}</span>
-            <span className="stat-card__label">Total de Sessões</span>
+            <span className="stat-card__label">Sessões Registradas</span>
           </div>
         </div>
-        <div className="glass-card stat-card">
+
+        <div className="glass-card stat-card stat-card--accuracy">
           <span className="stat-card__icon">🎯</span>
           <div className="stat-card__content">
             <span className="stat-card__value">{taxaMedia}%</span>
             <span className="stat-card__label">Taxa Média de Acerto</span>
           </div>
         </div>
-        <div className="glass-card stat-card">
+
+        <div className="glass-card stat-card stat-card--flashcards">
           <span className="stat-card__icon">🃏</span>
           <div className="stat-card__content">
             <span className="stat-card__value">{totalFlashcards}</span>
             <span className="stat-card__label">Flashcards Gerados</span>
           </div>
         </div>
-        <div className="glass-card stat-card">
+
+        <div className="glass-card stat-card stat-card--coverage">
           <span className="stat-card__icon">📋</span>
           <div className="stat-card__content">
             <span className="stat-card__value">{coberturaEdital}%</span>
@@ -127,10 +141,16 @@ export default function DashboardClient({
               {recentLogs.map((log) => (
                 <li key={log.slug} className="recent-sessions__item">
                   <div className="recent-sessions__info">
-                    <span className="recent-sessions__date">{log.data || '—'}</span>
+                    <span className="recent-sessions__date">📅 {log.data || '—'}</span>
                     <span className="recent-sessions__fase">{log.fase || '—'}</span>
                   </div>
-                  <span className="recent-sessions__score">
+                  <span className={`recent-sessions__score ${
+                    log.scorePercent >= 80
+                      ? 'score--high'
+                      : log.scorePercent >= 60
+                      ? 'score--medium'
+                      : 'score--low'
+                  }`}>
                     {log.scorePercent != null ? `${log.scorePercent}%` : '—'}
                   </span>
                 </li>
@@ -142,11 +162,17 @@ export default function DashboardClient({
         <div className="quick-access">
           <Link href="/flashcards" className="glass-card quick-card">
             <span className="quick-card__icon">🃏</span>
-            <span className="quick-card__label">Revisar Flashcards</span>
+            <div>
+              <span className="quick-card__label">Revisar Flashcards</span>
+              <p className="text-xs text-tertiary">Algoritmo Spaced Repetition (SM-2)</p>
+            </div>
           </Link>
           <Link href="/simulados" className="glass-card quick-card">
             <span className="quick-card__icon">📝</span>
-            <span className="quick-card__label">Novo Simulado</span>
+            <div>
+              <span className="quick-card__label">Novo Simulado</span>
+              <p className="text-xs text-tertiary">Questões interativas por tema</p>
+            </div>
           </Link>
         </div>
       </div>
@@ -194,6 +220,6 @@ export default function DashboardClient({
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
